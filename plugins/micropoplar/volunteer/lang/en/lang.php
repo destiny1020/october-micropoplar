@@ -13,6 +13,6 @@ return [
     ],
     'volunteers' => [
         'menu_label' => 'Volunteers',
-        'volunteers' => 'All Volunteers'
+        'all_volunteers' => 'All Volunteers'
     ],
 ];

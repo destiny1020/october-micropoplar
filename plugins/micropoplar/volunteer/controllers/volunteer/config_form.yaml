@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Volunteer
+
+# Model Form Field configuration
+form: $/micropoplar/volunteer/models/volunteer/fields.yaml
+
+# Model Class name
+modelClass: Micropoplar\Volunteer\Models\Volunteer
+
+# Default redirect location
+defaultRedirect: micropoplar/volunteer/volunteer
+
+# Create page
+create:
+    title: Create Volunteer
+    redirect: micropoplar/volunteer/volunteer/update/:id
+    redirectClose: micropoplar/volunteer/volunteer
+
+# Update page
+update:
+    title: Edit Volunteer
+    redirect: micropoplar/volunteer/volunteer
+    redirectClose: micropoplar/volunteer/volunteer
+
+# Preview page
+preview:
+    title: Preview Volunteer

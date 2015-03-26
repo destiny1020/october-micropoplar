@@ -24,16 +24,6 @@ class Plugin extends PluginBase
         ];
     }
 
-    public function register()
-    {
-
-    }
-
-    public function registerComponents()
-    {
-
-    }
-
     public function registerPermissions()
     {
         return [
@@ -44,18 +34,18 @@ class Plugin extends PluginBase
     public function registerNavigation()
     {
         return [
-            'user' => [
+            'volunteer' => [
                 'label'       => 'micropoplar.volunteer::lang.volunteers.menu_label',
-                'url'         => Backend::url('micropoplar/volunteer/volunteers'),
+                'url'         => Backend::url('micropoplar/volunteer/volunteer'),
                 'icon'        => 'icon-user',
                 'permissions' => ['micropoplar.volunteers.*'],
-                'order'       => 500,
+                'order'       => 1000,
 
                 'sideMenu' => [
-                    'users' => [
-                        'label'       => 'rainlab.user::lang.volunteers.all_volunteers',
+                    'volunteers' => [
+                        'label'       => 'micropoplar.volunteer::lang.volunteers.all_volunteers',
                         'icon'        => 'icon-user',
-                        'url'         => Backend::url('micropoplar/volunteer/volunteers'),
+                        'url'         => Backend::url('micropoplar/volunteer/volunteer'),
                         'permissions' => ['micropoplar.volunteers.access_users']
                     ]
                 ]
