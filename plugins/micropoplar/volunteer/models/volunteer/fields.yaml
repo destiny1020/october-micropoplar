@@ -3,6 +3,32 @@
 # ===================================
 
 fields:
-    id:
-        label: ID
-        disabled: true
+    identity_number:
+        label: micropoplar.volunteer::lang.volunteer.identity
+        span: full
+        required: true
+        comment: micropoplar.volunteer::lang.volunteer.identity_comment
+
+    name:
+        label: micropoplar.volunteer::lang.volunteer.name
+        span: left
+        required: true
+
+    email:
+        label: micropoplar.volunteer::lang.volunteer.email
+        span: right
+        required: true
+
+    password:
+        label: micropoplar.volunteer::lang.volunteer.password
+        type: password
+        span: left
+        required: true
+        comment: micropoplar.volunteer::lang.volunteer.password_comment
+
+    password_confirmation:
+        label: micropoplar.volunteer::lang.volunteer.password_confirmation
+        type: password
+        span: right
+        required: true
+        comment: micropoplar.volunteer::lang.volunteer.password_confirmation_comment

@@ -15,4 +15,14 @@ return [
         'menu_label' => 'Volunteers',
         'all_volunteers' => 'All Volunteers'
     ],
+    'volunteer' => [
+        'name' => 'Name',
+        'email' => 'Email',
+        'identity' => 'Identity Number',
+        'identity_comment' => 'Please input valid identity number. (15/18)',
+        'password' => 'Password',
+        'password_comment' => 'Please input password.',
+        'password_confirmation' => 'Password Confirmation',
+        'password_confirmation_comment' => 'Please repeat password.',
+    ]
 ];
