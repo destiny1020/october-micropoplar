@@ -2,6 +2,7 @@
 
 use BackendMenu;
 use Backend\Classes\Controller;
+use System\Classes\SettingsManager;
 
 /**
  * Volunteer Back-end Controller
@@ -23,5 +24,6 @@ class Volunteer extends Controller
         parent::__construct();
 
         BackendMenu::setContext('Micropoplar.Volunteer', 'volunteer', 'volunteers');
+        SettingsManager::setContext('Micropoplar.Volunteer', 'settings');
     }
 }

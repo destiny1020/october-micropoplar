@@ -5,19 +5,27 @@
 fields:
     identity_number:
         label: micropoplar.volunteer::lang.volunteer.identity
-        span: full
-        required: true
-        comment: micropoplar.volunteer::lang.volunteer.identity_comment
-
-    name:
-        label: micropoplar.volunteer::lang.volunteer.name
         span: left
         required: true
+        comment: micropoplar.volunteer::lang.volunteer.identity_comment
 
     email:
         label: micropoplar.volunteer::lang.volunteer.email
         span: right
         required: true
+        comment: micropoplar.volunteer::lang.volunteer.email_comment
+
+    realname:
+        label: micropoplar.volunteer::lang.volunteer.realname
+        span: left
+        required: true
+        comment: micropoplar.volunteer::lang.volunteer.realname_comment
+
+    nickname:
+        label: micropoplar.volunteer::lang.volunteer.nickname
+        span: right
+        required: true
+        comment: micropoplar.volunteer::lang.volunteer.nickname_comment
 
     password:
         label: micropoplar.volunteer::lang.volunteer.password
@@ -32,3 +40,42 @@ fields:
         span: right
         required: true
         comment: micropoplar.volunteer::lang.volunteer.password_confirmation_comment
+
+tabs:
+    fields:
+
+        phone:
+            label: micropoplar.volunteer::lang.volunteer.phone
+            span: left
+            comment: micropoplar.volunteer::lang.volunteer.phone_comment
+            tab: micropoplar.volunteer::lang.volunteer.tab_contact
+            required: true
+
+        company:
+            label: micropoplar.volunteer::lang.volunteer.company
+            span: right
+            comment: micropoplar.volunteer::lang.volunteer.company_comment
+            tab: micropoplar.volunteer::lang.volunteer.tab_contact
+
+        street_addr:
+            label: micropoplar.volunteer::lang.volunteer.street_addr
+            span: full
+            comment: micropoplar.volunteer::lang.volunteer.street_addr_comment
+            tab: micropoplar.volunteer::lang.volunteer.tab_contact
+
+        city:
+            label: micropoplar.volunteer::lang.volunteer.city
+            span: left
+            comment: micropoplar.volunteer::lang.volunteer.city_comment
+            tab: micropoplar.volunteer::lang.volunteer.tab_contact
+
+        district:
+            label: micropoplar.volunteer::lang.volunteer.district
+            span: right
+            comment: micropoplar.volunteer::lang.volunteer.district_comment
+            tab: micropoplar.volunteer::lang.volunteer.tab_contact
+
+        # template_hint:
+        #     type: hint
+        #     path: $/micropoplar/volunteer/models/volunteer/_template_hint.htm
+        #     tab: micropoplar.volunteer::lang.volunteer.tab_contact

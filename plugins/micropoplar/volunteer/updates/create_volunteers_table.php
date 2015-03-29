@@ -12,7 +12,8 @@ class CreateVolunteersTable extends Migration
         {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('name')->nullable();
+            $table->string('nickname')->unique();
+            $table->string('realname');
             $table->string('identity_number')->unique();
             $table->string('email')->unique();
             $table->string('password');

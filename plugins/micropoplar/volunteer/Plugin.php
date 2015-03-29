@@ -1,7 +1,9 @@
 <?php namespace Micropoplar\Volunteer;
 
+use App;
 use Backend;
 use System\Classes\PluginBase;
+use Illuminate\Foundation\AliasLoader; 
 
 /**
  * Volunteer Plugin Information File
@@ -21,6 +23,24 @@ class Plugin extends PluginBase
             'description' => 'micropoplar.volunteer::lang.plugin.description',
             'author' => 'Micropoplar',
             'icon' => 'icon-leaf'
+        ];
+    }
+
+    public function register()
+    {
+        $alias = AliasLoader::getInstance();
+        $alias->alias('Auth', 'Micropoplar\Volunteer\Facades\VolunteerAuth');
+
+        App::singleton('volunteer.auth', function() {
+            return \Micropoplar\Volunteer\Classes\AuthManager::instance();
+        });
+    }
+
+    public function registerComponents()
+    {
+        return [
+            'Micropoplar\Volunteer\Components\VolunteerAccount' => 'volunteerAccount',
+            'Micropoplar\Volunteer\Components\VolunteerSession' => 'volunteerSession'
         ];
     }
 
@@ -50,6 +70,20 @@ class Plugin extends PluginBase
                     ]
                 ]
             ]
+        ];
+    }
+
+    public function registerSettings()
+    {
+        return [
+            'settings' => [
+                'label'       => 'micropoplar.volunteer::settings.settings.menu_label',
+                'description' => 'micropoplar.volunteer::settings.settings.menu_description',
+                'category'    => 'micropoplar.volunteer::settings.settings.volunteers',
+                'icon'        => 'icon-cog',
+                'class'       => 'Micropoplar\Volunteer\Models\Settings',
+                'order'       => 500
+            ],
         ];
     }
 

@@ -1,0 +1,14 @@
+title = "user"
+url = "/user"
+layout = "default"
+description = "test user"
+hidden = "0"
+
+[account]
+paramCode = "code"
+
+[session]
+security = "all"
+==
+{% component 'account' %}
+{% component 'session' %}
