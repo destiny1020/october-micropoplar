@@ -17,24 +17,23 @@ class Volunteer extends Model
      */
     public $table = 'micropoplar_volunteer_volunteers';
 
-    public static $rulesStatic = [
+    public $rules = [
         'identity_number' => array(
             'required',
             'regex:/^\d{15}$|^\d{18}$/',
             'unique:micropoplar_volunteer_volunteers'
             ),
         'email' => 'required|between:3,64|email|unique:micropoplar_volunteer_volunteers',
+        'phone' => array(
+            'required',
+            'regex:/^d{11}$/',
+            'unique:micropoplar_volunteer_volunteers'
+            ),
         'realname' => 'required|between:2,12',
         'nickname' => 'required|between:6,20|unique:micropoplar_volunteer_volunteers',
         'password' => 'required:create|between:4,64|confirmed',
         'password_confirmation' => 'required_with:password|between:4,64'
     ];
-
-    public function __construct()
-    {
-        // backend form will validate one by one
-        $this->rules = self::$rulesStatic;
-    }
 
     /**
      * @var array Guarded fields
@@ -47,8 +46,10 @@ class Volunteer extends Model
      * @var array Fillable fields
      */
     protected $fillable = [
-        'name',
+        'realname',
+        'nickname',
         'email',
+        'phone',
         'identity_number',
         'password',
         'password_confirmation'

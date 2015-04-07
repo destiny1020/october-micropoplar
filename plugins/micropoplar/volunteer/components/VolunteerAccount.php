@@ -139,10 +139,10 @@ class VolunteerAccount extends ComponentBase
             $data['password_confirmation'] = post('password');
         }
 
-        $rules = VolunteerModel::$rulesStatic;
+        $rules = (new VolunteerModel)->rules;
 
         if ($this->loginAttribute() == UserSettings::LOGIN_USERNAME) {
-            $rules['username'] = 'required|between:2,64';
+            // $rules['username'] = 'required|between:2,64';
         }
 
         $validation = Validator::make($data, $rules);
