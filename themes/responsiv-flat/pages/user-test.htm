@@ -1,0 +1,18 @@
+title = "User Test"
+url = "/user-test"
+layout = "default"
+hidden = "0"
+
+[account]
+paramCode = "code"
+
+[resetPassword]
+paramCode = "code"
+
+[resetPassword resetPassword2]
+paramCode = "code"
+
+[session]
+security = "all"
+==
+{% component 'account' %}{% component 'session' %}

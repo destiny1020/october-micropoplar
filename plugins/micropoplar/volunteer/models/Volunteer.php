@@ -1,21 +1,19 @@
 <?php namespace Micropoplar\Volunteer\Models;
 
-use October\Rain\Database\Model;
-
+use URL;
+use Mail;
+use Micropoplar\Volunteer\Models\Settings as UserSettings;
+use October\Rain\Auth\Models\User as UserBase;
 /**
  * Volunteer Model
  */
-class Volunteer extends Model
+class Volunteer extends UserBase
 {
-
-    use \October\Rain\Database\Traits\Hashable;
-    use \October\Rain\Database\Traits\Purgeable;
-    use \October\Rain\Database\Traits\Validation;
 
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'micropoplar_volunteer_volunteers';
+    protected $table = 'micropoplar_volunteer_volunteers';
 
     public $rules = [
         'identity_number' => array(
@@ -35,18 +33,6 @@ class Volunteer extends Model
         'password_confirmation' => 'required_with:password|between:4,64'
     ];
 
-    protected $hidden = ['password', 'reset_password_code', 'activation_code', 'persist_code'];
-
-    /**
-     * @var array Guarded fields
-     */
-    protected $guarded = ['reset_password_code', 'activation_code', 'persist_code'];
-
-    protected $hashable = ['password'];
-
-    /**
-     * @var array Fillable fields
-     */
     protected $fillable = [
         'realname',
         'nickname',
@@ -72,84 +58,33 @@ class Volunteer extends Model
     public $attachOne = [];
     public $attachMany = [];
 
-    public function getActivationCode()
+    public function attemptActivation($code)
     {
-        $this->activation_code = $activationCode = $this->getRandomString();
-
-        // TODO: get meaning
-        $this->forceSave();
-
-        return $activationCode;
-    }
-
-    public function attemptActivation($activationCode)
-    {
-        if($this->is_activated)
-            throw new Exception('Volunteer is already active!');
-
-        if($activationCode == $this->activation_code) {
-            $this->activation_code = null;
-            $this->is_activated = true;
-            $this->activated_at = $this->freshTimestamp();
-
-            // TODO: get meaning
-            $this->forceSave();
-            return true;
+        $result = parent::attemptActivation($code);
+        if ($result === false) {
+            return false;
         }
 
-        return false;
+        if ($mailTemplate = UserSettings::get('welcome_template')) {
+            $data = [
+                'name' => $this->name,
+                'email' => $this->email
+            ];
+
+            Mail::send($mailTemplate, $data, function($message) {
+                $message->to($this->email, $this->name);
+            });
+        }
+
+        return true;
     }
 
     public function getPersistCode()
     {
-        if(!$this->persist_code) {
-            $persistCode = $this->persist_code = $this->getRandomString();
-            $this->forceSave();
-            return $persistCode;
-        }
+        if (!$this->persist_code)
+            return parent::getPersistCode();
 
         return $this->persist_code;
-    }
-
-    public function checkPersistCode($persistCode)
-    {
-        if (!$persistCode)
-            return false;
-
-        return $persistCode == $this->persist_code;
-    }
-
-    /**
-     * Generate a random string
-     * @return string
-     */
-    public function getRandomString($length = 42)
-    {
-        /*
-         * Use OpenSSL (if available)
-         */
-        if (function_exists('openssl_random_pseudo_bytes')) {
-            $bytes = openssl_random_pseudo_bytes($length * 2);
-
-            if ($bytes === false)
-                throw new RuntimeException('Unable to generate a random string');
-
-            return substr(str_replace(['/', '+', '='], '', base64_encode($bytes)), 0, $length);
-        }
-
-        $pool = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
-        return substr(str_shuffle(str_repeat($pool, 5)), 0, $length);
-    }
-
-    //
-    // Events
-    //
-
-    public function afterLogin()
-    {
-        $this->last_login = $this->freshTimestamp();
-        $this->forceSave();
     }
 
 }

@@ -10,6 +10,8 @@
 
 {% else %}
 
+	<a data-request="onLogout">Sign out</a>
+
     {% partial __SELF__ ~ '::activation_check' %}
 
     {% partial __SELF__ ~ '::update' %}

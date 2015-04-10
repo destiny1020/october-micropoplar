@@ -1,134 +1,114 @@
 <form
-    data-request="onRegister">
-<!--     <div class="form-group">
-        <label for="registerIdentity">Identity Number<span style="color: red">&nbsp;*</span></label>
-        <input name="identity_number" type="text" class="form-control" id="registerIdentity" placeholder="Enter your identity number">
-    </div>
+    data-request="onRegister"
+    data-request-data="redirect: '/volunteer'">
+    <div class="signin-container">
+        <div class="container">
 
-    <div class="form-group">
-        <label for="registerName">Full Name</label>
-        <input name="name" type="text" class="form-control" id="registerName" placeholder="Enter your full name">
-    </div>
-
-    <div class="form-group">
-        <label for="registerEmail">Email</label>
-        <input name="email" type="email" class="form-control" id="registerEmail" placeholder="Enter your email">
-    </div>
-
-    <div class="form-group">
-        <label for="registerPassword">Password</label>
-        <input name="password" type="password" class="form-control" id="registerPassword" placeholder="Choose a password">
-    </div>
-
-    <button type="submit" class="btn btn-default">Register</button> -->
-<div class="signin-container">
-    <div class="container">
-
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="signin">
-                    <div class="signin-screen">
-                        <div class="signin-icon">
-                            <img src="{{ 'assets/images/logo.png'|theme }}" alt="Welcome to Flat App" />
-                            <h4>Sign up to <small>Flat App</small></h4>
-                        </div>
-
-                        <div class="signin-form">
-                            <!-- identity number -->
-                            <div class="form-group">
-                                <input
-                                    type="text"
-                                    class="form-control signin-field"
-                                    value=""
-                                    placeholder="Enter your Identity Number"
-                                    id="signin-identity"
-                                    name="identity_number" />
-                                <label class="signin-field-icon fui-info" for="signin-name"></label>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="signin">
+                        <div class="signin-screen">
+                            <div class="signin-icon">
+                                <img src="{{ 'assets/images/logo.png'|theme }}" alt="Welcome to Flat App" />
+                                <h4>Sign up to <small>Flat App</small></h4>
                             </div>
 
-                            <!-- email -->
-                            <div class="form-group">
-                                <input
-                                    type="text"
-                                    class="form-control signin-field"
-                                    value=""
-                                    placeholder="Enter your Email"
-                                    id="signin-email"
-                                    name="email" />
-                                <label class="signin-field-icon fui-mail" for="signin-email"></label>
+                            <div class="signin-form">
+                                <!-- identity number -->
+                                <div class="form-group">
+                                    <input
+                                        type="text"
+                                        class="form-control signin-field"
+                                        value=""
+                                        placeholder="Enter your Identity Number"
+                                        id="signin-identity"
+                                        name="identity_number" />
+                                    <label class="signin-field-icon fui-info" for="signin-name"></label>
+                                </div>
+
+                                <!-- email -->
+                                <div class="form-group">
+                                    <input
+                                        type="text"
+                                        class="form-control signin-field"
+                                        value=""
+                                        placeholder="Enter your Email"
+                                        id="signin-email"
+                                        name="email" />
+                                    <label class="signin-field-icon fui-mail" for="signin-email"></label>
+                                </div>
+
+                                <!-- phone -->
+                                <div class="form-group">
+                                    <input
+                                        type="text"
+                                        class="form-control signin-field"
+                                        value=""
+                                        placeholder="Enter your Cellphone"
+                                        id="signin-phone"
+                                        name="phone" />
+                                    <label class="signin-field-icon fui-phone" for="signin-phone"></label>
+                                </div>
+
+                                <!-- real name -->
+                                <div class="form-group">
+                                    <input
+                                        type="text"
+                                        class="form-control signin-field"
+                                        value=""
+                                        placeholder="Enter your Real Name"
+                                        id="signin-realname"
+                                        name="realname" />
+                                    <label class="signin-field-icon fui-user" for="signin-realname"></label>
+                                </div>
+
+                                <!-- nick name -->
+                                <div class="form-group">
+                                    <input
+                                        type="text"
+                                        class="form-control signin-field"
+                                        value=""
+                                        placeholder="Enter your Nick Name"
+                                        id="signin-nickname"
+                                        name="nickname" />
+                                    <label class="signin-field-icon fui-user" for="signin-nickname"></label>
+                                </div>
+
+                                <!-- password -->
+                                <div class="form-group">
+                                    <input
+                                        type="password"
+                                        class="form-control signin-field"
+                                        value=""
+                                        placeholder="Enter your Password"
+                                        id="signin-pass"
+                                        name="password" />
+                                    <label class="signin-field-icon fui-lock" for="signin-pass"></label>
+                                </div>
+
+                                <!-- password confirmation -->
+                                <div class="form-group">
+                                    <input
+                                        type="password"
+                                        class="form-control signin-field"
+                                        value=""
+                                        placeholder="Confirm your Password"
+                                        id="signin-pass-confirm"
+                                        name="password_confirmation" />
+                                    <label class="signin-field-icon fui-lock" for="signin-pass-confirm"></label>
+                                </div>
+
+                                <!-- <a class="btn btn-primary btn-lg btn-block" href="#">Register</a> -->
+                                <button type="submit" class="btn btn-primary btn-lg btn-block">Register</button>
+
+                                <a class="signin-link" href="{{ 'samples/signin'|page }}">Already have an account?</a>
                             </div>
-
-                            <!-- phone -->
-                            <div class="form-group">
-                                <input
-                                    type="text"
-                                    class="form-control signin-field"
-                                    value=""
-                                    placeholder="Enter your Cellphone"
-                                    id="signin-phone"
-                                    name="phone" />
-                                <label class="signin-field-icon fui-phone" for="signin-phone"></label>
-                            </div>
-
-                            <!-- real name -->
-                            <div class="form-group">
-                                <input
-                                    type="text"
-                                    class="form-control signin-field"
-                                    value=""
-                                    placeholder="Enter your Real Name"
-                                    id="signin-realname"
-                                    name="realname" />
-                                <label class="signin-field-icon fui-user" for="signin-realname"></label>
-                            </div>
-
-                            <!-- nick name -->
-                            <div class="form-group">
-                                <input
-                                    type="text"
-                                    class="form-control signin-field"
-                                    value=""
-                                    placeholder="Enter your Nick Name"
-                                    id="signin-nickname"
-                                    name="nickname" />
-                                <label class="signin-field-icon fui-user" for="signin-nickname"></label>
-                            </div>
-
-                            <!-- password -->
-                            <div class="form-group">
-                                <input
-                                    type="password"
-                                    class="form-control signin-field"
-                                    value=""
-                                    placeholder="Enter your Password"
-                                    id="signin-pass"
-                                    name="password" />
-                                <label class="signin-field-icon fui-lock" for="signin-pass"></label>
-                            </div>
-
-                            <!-- password confirmation -->
-                            <div class="form-group">
-                                <input
-                                    type="password"
-                                    class="form-control signin-field"
-                                    value=""
-                                    placeholder="Confirm your Password"
-                                    id="signin-pass-confirm"
-                                    name="password_confirmation" />
-                                <label class="signin-field-icon fui-lock" for="signin-pass-confirm"></label>
-                            </div>
-
-                            <!-- <a class="btn btn-primary btn-lg btn-block" href="#">Register</a> -->
-                            <button type="submit" class="btn btn-primary btn-lg btn-block">Register</button>
-
-                            <a class="signin-link" href="{{ 'samples/signin'|page }}">Already have an account?</a>
                         </div>
                     </div>
+
                 </div>
-
             </div>
-        </div>
 
+        </div>
     </div>
-</div>
 </form>

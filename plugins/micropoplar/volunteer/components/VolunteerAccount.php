@@ -7,6 +7,7 @@ use Cms\Classes\ComponentBase;
 use Cms\Classes\Page;
 use Exception;
 use Validator;
+use Redirect;
 use ValidationException;
 use ApplicationException;
 use Micropoplar\Volunteer\Models\Settings as UserSettings;
